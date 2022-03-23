@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Goal;
 use Illuminate\Http\Request;
+// ログインしているユーザーの投稿のみをレスポンスとして返す
 use Illuminate\Support\Facades\Auth;
 
 class GoalController extends Controller
@@ -32,8 +33,9 @@ class GoalController extends Controller
     {
         // 新しいGoalモデルのレコードを作成
         $goal = new Goal();
-        // 受け取ったレスポンスから'title'を抽出し、Goalモデルのtitleカラムに代入
+        // 受け取ったレスポンスから'title'を取得し、Goalモデルのtitleカラムに代入
         $goal->title = request('title');
+        // 投稿者のidを取得し、Goalモデルのuser_idカラムに代入
         $goal->user_id = Auth::id();
         // Goalモデルを保存
         $goal->save();
@@ -57,6 +59,7 @@ class GoalController extends Controller
     {
         // 受け取ったレスポンスから'title'を抽出し、Goalモデルのtitleカラムに上書き
         $goal->title = request('title');
+        // 投稿者のidを取得し、Goalモデルのuser_idカラムに上書き
         $goal->user_id = Auth::id();
         // Goalモデルを保存
         $goal->save();
