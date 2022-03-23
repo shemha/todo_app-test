@@ -25,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(UrlGenerator $url)
     {
         // https通信を利用
-        $url->forceScheme('https');
+        // $url->forceScheme('https');
     }
 }

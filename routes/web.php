@@ -19,13 +19,16 @@ Route::get('/', 'HomeController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// ユーザーがログイン済みかどうかを確認
 // GoalのRESTfulなルーティングを実装
-Route::resource("goals", "GoalController");
+Route::resource("goals", "GoalController")->middleware('auth');
 
+// ユーザーがログイン済みかどうかを確認
 // goals.todosと記述することでネストされたRESTfulなルーティングを実装
-Route::resource("goals.todos", "TodoController");
+Route::resource("goals.todos", "TodoController")->middleware('auth');
 
+// ユーザーがログイン済みかどうかを確認
 // 作成したTodoを並び替える処理を行うルーティング
-Route::post('/goals/{goal}/todos/{todo}/sort', 'TodoController@sort');
+Route::post('/goals/{goal}/todos/{todo}/sort', 'TodoController@sort')->middleware('auth');
 
 Auth::routes();
