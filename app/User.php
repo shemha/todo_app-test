@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    // １対多(Userモデルを'1'としてGoalモデルを'多')のリレーションを追加
+    public function goals()
+    {
+        return $this->hasMany('App\Goal');
+    }
+    // １対多(Userモデルを'1'としてTodoモデルを'多')のリレーションを追加
+    public function todos()
+    {
+        return $this->hasMany('App\Todo');
+    }
 }
