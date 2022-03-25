@@ -51403,7 +51403,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nError: Node Sass version 7.0.1 is incompatible with ^4.0.0.\n    at getRenderFuncFromSassImpl (/Users/shemha/Desktop/samurai/laravel/todo_app-test/node_modules/sass-loader/dist/index.js:165:13)\n    at Object.loader (/Users/shemha/Desktop/samurai/laravel/todo_app-test/node_modules/sass-loader/dist/index.js:79:18)\n    at /Users/shemha/Desktop/samurai/laravel/todo_app-test/node_modules/webpack/lib/NormalModule.js:316:20\n    at /Users/shemha/Desktop/samurai/laravel/todo_app-test/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Users/shemha/Desktop/samurai/laravel/todo_app-test/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at runSyncOrAsync (/Users/shemha/Desktop/samurai/laravel/todo_app-test/node_modules/loader-runner/lib/LoaderRunner.js:143:3)\n    at iterateNormalLoaders (/Users/shemha/Desktop/samurai/laravel/todo_app-test/node_modules/loader-runner/lib/LoaderRunner.js:232:2)\n    at /Users/shemha/Desktop/samurai/laravel/todo_app-test/node_modules/loader-runner/lib/LoaderRunner.js:205:4\n    at /Users/shemha/Desktop/samurai/laravel/todo_app-test/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:85:15\n    at processTicksAndRejections (internal/process/task_queues.js:75:11)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
