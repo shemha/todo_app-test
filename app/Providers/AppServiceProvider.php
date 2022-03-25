@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(UrlGenerator $url)
     {
+        // Cloud9を利用や実環境の時に設定
+        // デスクトップローカルではhttpのままにする
         // https通信を利用
         // $url->forceScheme('https');
     }
