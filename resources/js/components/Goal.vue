@@ -131,7 +131,7 @@
 <script>
 import axios from "axios"
 import $ from "jquery"
-import Todos from "./Todos.vue";
+import Todos from "./Todo.vue";
 export default {
     data: function() {
         return {
