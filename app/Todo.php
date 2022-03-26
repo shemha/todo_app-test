@@ -19,4 +19,9 @@ class Todo extends Model
     {
         return $this->belongsTo('App\Goal');
     }
+    // 多対多(TodoモデルとTagモデルは互いに'多')のリレーションを追加
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
 }

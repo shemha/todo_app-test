@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Todo');
     }
+    // １対多(Userモデルを'1'としてTagモデルを'多')のリレーションを追加
+    public function tags()
+    {
+        return $this->hasMany('App\Tag');
+    }
 }
