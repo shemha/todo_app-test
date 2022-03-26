@@ -15,6 +15,7 @@ class HomeController extends Controller
     // ユーザーがログイン済みかどうかをチェック
     public function __construct()
     {
+        // ミドルウェアメソッドを呼び出し
         $this->middleware('auth');
     }
 

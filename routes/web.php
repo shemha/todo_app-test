@@ -31,4 +31,8 @@ Route::resource("goals.todos", "TodoController")->middleware('auth');
 // 作成したTodoを並び替える処理を行うルーティング
 Route::post('/goals/{goal}/todos/{todo}/sort', 'TodoController@sort')->middleware('auth');
 
+// ユーザーがログイン済みかどうかを確認
+// TagのRESTfulなルーティングを実装
+Route::resource("tags", "TagController")->middleware('auth');
+
 Auth::routes();

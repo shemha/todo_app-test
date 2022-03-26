@@ -16,6 +16,7 @@ class GoalController extends Controller
      */
     public function index()
     {
+        // 投稿者のuserを取得し、Goalモデルのgoalsカラムに代入
         $goals = Auth::user()->goals;
 
         // responseヘルパー関数でアクションからレスポンスを返す
