@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Todo;
 // 設定したGoalモデルとのリレーションを使用
 use App\Goal;
+use App\Tag;
 use Illuminate\Http\Request;
 // ログインしているユーザーのTodoのみをレスポンスとして返す
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class TodoController extends Controller
     public function index(Request $request, Goal $goal)
     {
         // ASCの順に並び替えて取得
-        $todos = $goal->todos()->orderBy('done', 'asc')->orderBy('position', 'asc')->get();
+        $todos = $goal->todos()->with('tags')->orderBy('done', 'asc')->orderBy('position', 'asc')->get();
         // responseヘルパー関数でアクションからレスポンスを返す
         // ユーザーが作成したすべてのTodoをJSON形式で送信
         return response()->json($todos);
@@ -48,7 +49,7 @@ class TodoController extends Controller
         // Todoモデルを保存
         $todo->save();
         // ASCの順に並び替える
-        $todos = $goal->todos()->orderBy('done', 'asc')->orderBy('position', 'asc')->get();
+        $todos = $goal->todos()->with('tags')->orderBy('done', 'asc')->orderBy('position', 'asc')->get();
         // responseヘルパー関数でアクションからレスポンスを返す
         // ユーザーが作成したすべてのTodoをJSON形式で送信
         return response()->json($todos);
@@ -77,7 +78,7 @@ class TodoController extends Controller
         // Todoモデルを保存
         $todo->save();
         // ASCの順に並び替える
-        $todos = $goal->todos()->orderBy('done', 'asc')->orderBy('position', 'asc')->get();
+        $todos = $goal->todos()->with('tags')->orderBy('done', 'asc')->orderBy('position', 'asc')->get();
         // responseヘルパー関数でアクションからレスポンスを返す
         // ユーザーが作成したすべてのTodoをJSON形式で送信
         return response()->json($todos);
@@ -94,7 +95,7 @@ class TodoController extends Controller
         // 指定したTodoモデルのレコードを削除
         $todo->delete();
         // ASCの順に並び替える
-        $todos = $goal->todos()->orderBy('done', 'asc')->orderBy('position', 'asc')->get();
+        $todos = $goal->todos()->with('tags')->orderBy('done', 'asc')->orderBy('position', 'asc')->get();
         // responseヘルパー関数でアクションからレスポンスを返す
         // ユーザーが作成したすべてのTodoをJSON形式で送信
         return response()->json($todos);
@@ -114,7 +115,25 @@ class TodoController extends Controller
             $todo->moveAfter($exchangeTodo);
         }
 
-        $todos = $goal->todos()->orderBy('done', 'asc')->orderBy('position', 'asc')->get();
+        $todos = $goal->todos()->with('tags')->orderBy('done', 'asc')->orderBy('position', 'asc')->get();
+
+        return response()->json($todos);
+    }
+
+    public function addTag(Request $request, Goal $goal, Todo $todo, Tag $tag)
+    {
+        $todo->tags()->attach($tag->id);
+
+        $todos = $goal->todos()->with('tags')->orderBy('done', 'asc')->orderBy('position', 'asc')->get();
+
+        return response()->json($todos);
+    }
+
+    public function removeTag(Request $request, Goal $goal, Todo $todo, Tag $tag)
+    {
+        $todo->tags()->detach($tag->id);
+
+        $todos = $goal->todos()->with('tags')->orderBy('done', 'asc')->orderBy('position', 'asc')->get();
 
         return response()->json($todos);
     }
